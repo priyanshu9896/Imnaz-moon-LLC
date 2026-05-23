@@ -357,17 +357,20 @@ body {
   .contact-row {
     flex-direction: row;
     justify-content: center;
-    gap: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
   }
 }
 
 .contact-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.5rem;
   text-decoration: none;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.25s ease;
 }
 
@@ -379,8 +382,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
   border-radius: 50%;
   border: 1px solid #e7f4d8;
   background: #f7fbf0;
