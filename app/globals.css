@@ -1,50 +1,101 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0F172A;
-  --color-primary-dark: #111827;
-  --color-accent: #C8A96B;
-  --color-accent-light: #EAD7A1;
   --font-sans: var(--font-inter);
 }
 
-:root {
-  --background: #0F172A;
-  --foreground: #ffffff;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* ─── Animated background blobs ─── */
+@keyframes blob-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(80px, -60px) scale(1.15);
+  }
+  50% {
+    transform: translate(-40px, 40px) scale(0.9);
+  }
+  75% {
+    transform: translate(60px, 80px) scale(1.05);
+  }
 }
 
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(200, 169, 107, 0.3);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(200, 169, 107, 0.1);
+@keyframes blob-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-70px, 50px) scale(1.1);
+  }
+  66% {
+    transform: translate(50px, -40px) scale(0.95);
+  }
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@keyframes blob-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(50px, 60px) scale(1.08);
+  }
+  60% {
+    transform: translate(-60px, -30px) scale(0.92);
+  }
 }
 
-.text-gradient-accent {
-  background: linear-gradient(135deg, #C8A96B 0%, #EAD7A1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.blob-1 {
+  animation: blob-drift-1 20s ease-in-out infinite;
+}
+.blob-2 {
+  animation: blob-drift-2 25s ease-in-out infinite;
+}
+.blob-3 {
+  animation: blob-drift-3 18s ease-in-out infinite;
+}
+
+/* ─── Card float ─── */
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.card-float {
+  animation: card-float 6s ease-in-out infinite;
+}
+
+/* ─── Respect reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .blob-1,
+  .blob-2,
+  .blob-3,
+  .card-float {
+    animation: none !important;
+  }
 }

@@ -4,16 +4,21 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "IMNAZ MOON TECHNICAL SERVICES | Coming Soon",
-  description: "Building Excellence Across Technical Services. We're creating a modern experience to better showcase our technical services and solutions.",
+  title: "IMNAZ MOON TECHNICAL SERVICES L.L.C — Coming Soon",
+  description:
+    "Our new digital experience is currently being crafted. IMNAZ MOON TECHNICAL SERVICES L.L.C — Dubai, UAE.",
+  robots: "index, follow",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F172A",
+  themeColor: "#F8FAFC",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -22,11 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} font-sans antialiased`}
-    >
-      <body className="min-h-screen flex flex-col bg-[#0F172A] text-white selection:bg-[#C8A96B] selection:text-[#0F172A]">{children}</body>
+    <html lang="en" className={inter.className}>
+      <body className="min-h-dvh bg-[#F8FAFC] text-[#0F172A] selection:bg-[#CFE8AE]/60 selection:text-[#0F172A]">
+        {children}
+      </body>
     </html>
   );
 }
